@@ -105,7 +105,7 @@ describe('Test function calculateBardoces',()=>{
 
 
 
-describe('pos', () => {
+describe('Test function printReceipt', () => {
 
   it('should print text', () => {
 
@@ -120,27 +120,41 @@ describe('pos', () => {
       'ITEM000005-2',
     ];
 
-//       const expectText = `***<没钱赚商店>收据***
-// 名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)
-// 名称：荔枝，数量：2.5斤，单价：15.00(元)，小计：37.50(元)
-// 名称：方便面，数量：3袋，单价：4.50(元)，小计：9.00(元)
-// ----------------------
-// 总计：58.50(元)
-// 节省：7.50(元)
-// **********************`;
-
-    const expectText = `***<没钱赚商店>收据***
-名称：雪碧，数量：5瓶，单价：3(元)，小计：12(元)
-名称：荔枝，数量：2斤，单价：15(元)，小计：30(元)
-名称：方便面，数量：3袋，单价：4.5(元)，小计：9(元)
+      const expectText = `***<没钱赚商店>收据***
+名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)
+名称：荔枝，数量：2.5斤，单价：15.00(元)，小计：37.50(元)
+名称：方便面，数量：3袋，单价：4.50(元)，小计：9.00(元)
 ----------------------
-总计：51(元)
-节省：7.5(元)
+总计：58.50(元)
+节省：7.50(元)
 **********************`;
-    console.log(expectText);
-    console.log(printReceipt(barcodes));
 
-    expect(printReceipt(barcodes)).toBe(expectText);
+    expect(printReceipt(tags)).toBe(expectText);
+
   });
+
+
+    it('should print text', () => {
+
+        const expectText = `***<没钱赚商店>收据***
+名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)
+名称：荔枝，数量：2斤，单价：15.00(元)，小计：30.00(元)
+名称：方便面，数量：3袋，单价：4.50(元)，小计：9.00(元)
+----------------------
+总计：51.00(元)
+节省：7.50(元)
+**********************`;
+
+        expect(printReceipt(barcodes)).toBe(expectText);
+    });
+
+
+    it('should print text', () => {
+
+        const expectText = `Error[barcodes exist unvalid]`;
+
+        expect(printReceipt(barcodes1)).toBe(expectText);
+    });
+
 
 });
