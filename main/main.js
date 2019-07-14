@@ -35,7 +35,7 @@ const isBarCodesExist = (barcodes) => {
 
 
 const combineBardoces = (barcodes) => {
-    return barcodes.reduce( (all,one) => {
+    return barcodes.reduce((all,one) => {
         const array = one.split("-");
         const barcode = array[0];
         let count = typeof(array[1]) === "undefined" ? 1 : parseInt(array[1]);
@@ -50,4 +50,56 @@ const combineBardoces = (barcodes) => {
 
     },{});
 };
+
+
+const calculateBardoces = (barcodes) =>{
+
+    let itemsDeatails = [];
+
+    for(let key in barcodes) {
+        itemsDeatails.push(calculateBarcode(key,barcodes[key],));
+    }
+
+    return itemsDeatails;
+
+};
+
+const calculateBarcode = (barcode,count) => {
+
+    let result = {};
+
+    const promotion = loadPromotions();
+    const itemsData = loadAllItems();
+
+
+    for(let item of itemsData){
+        if(barcode == item["barcode"]){
+            result = item;
+            result["count"] = count;
+            break;
+        }
+    }
+
+    const proItemList = promotion[0]["barcodes"];
+
+    // console.log(result["count"]);
+
+    result["proCount"] = proItemList.includes(barcode) ? Math.floor(result["count"] / 3) : 0;
+    result["count"] = result["count"] - result["proCount"];
+
+    result["prototal"] = result["price"] * result["proCount"];
+    result["total"] = result["price"] * result["count"];
+
+
+    return result;
+
+};
+
+
+
+
+
+
+
+
 

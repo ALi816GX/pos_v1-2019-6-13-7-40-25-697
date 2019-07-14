@@ -36,6 +36,16 @@ const combineBarcodes = {
 };
 
 
+const itemsDeatails = [
+    {barcode: "ITEM000001", count: 4, name: "雪碧", price: 3, proCount: 1, prototal: 3, total: 12, unit: "瓶"},
+    {barcode: "ITEM000003",count: 2,name: "荔枝", price: 15, proCount: 0, prototal: 0, total: 30, unit: "斤"},
+    {barcode: "ITEM000005",count: 2,name: "方便面", price: 4.5, proCount: 1, prototal: 4.5, total: 9, unit: "袋"}
+    ];
+
+
+
+
+
 describe('Test function isBarCodesExist',()=>{
         it('should return true',()=>{
 
@@ -69,9 +79,7 @@ describe('Test function isBarCodesExist',()=>{
 describe('Test function combineBardoces',()=>{
         it('should return true',()=>{
 
-            const result = combineBardoces(barcodes);
-            console.log(result);
-            console.log(combineBarcodes);
+            let result = combineBardoces(barcodes);
 
             expect(result).toEqual(combineBarcodes);
 
@@ -82,33 +90,20 @@ describe('Test function combineBardoces',()=>{
 );
 
 
+describe('Test function calculateBardoces',()=>{
 
-// describe('method1',()=>{
-//         it('should return true',()=>{
-//
-//             const result = judge(2,1);
-//
-//             console.log(result);
-//
-//             expect(result).toBe(true);
-//
-//         })
-//     }
-// );
-//
-//
-// describe('method2',()=>{
-//         it('should return 3',()=>{
-//
-//             const result = add(2,1);
-//
-//             console.log(result);
-//
-//             expect(result).toBe(3);
-//
-//         })
-//     }
-// );
+        it('should return trueData',()=>{
+
+            let result = calculateBardoces(combineBarcodes);
+
+            expect(result).toEqual(itemsDeatails);
+
+        })
+    }
+);
+
+
+
 
 
 // describe('pos', () => {
