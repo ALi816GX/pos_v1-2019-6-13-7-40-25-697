@@ -96,6 +96,43 @@ const calculateBarcode = (barcode,count) => {
 };
 
 
+const printReceipt = (barcodes) => {
+
+    if(!isBarCodesExist(barcodes)){
+        return "Error[barcodes exist unvalid]";
+    }
+
+    else{
+
+        let receipt = calculateBardoces(combineBardoces(barcodes));
+
+        // console.log(receipt);
+
+        let totalAll = 0;
+        let proTotalAll = 0;
+
+        let result = `***<没钱赚商店>收据***\n`;
+
+        receipt.forEach((one)=>{
+            totalAll += one.total;
+            proTotalAll += one.prototal;
+            const totalCount = one["count"] + one["proCount"];
+            result += `名称：${one.name}，数量：${totalCount}${one.unit}，单价：${one.price}(元)，小计：${one.total}(元)\n`
+        });
+
+        result += `----------------------\n`;
+        result += `总计：${totalAll}(元)\n`
+        result += `节省：${proTotalAll}(元)\n`
+        result += `**********************`;
+
+
+        return result;
+
+    }
+
+};
+
+
 
 
 
