@@ -29,6 +29,13 @@ const barcodes2 = [
 ];
 
 
+const combineBarcodes = {
+    ITEM000001: 5,
+    ITEM000003: 2,
+    ITEM000005: 3
+};
+
+
 describe('Test function isBarCodesExist',()=>{
         it('should return true',()=>{
 
@@ -55,6 +62,25 @@ describe('Test function isBarCodesExist',()=>{
     })
     }
 );
+
+
+
+
+describe('Test function combineBardoces',()=>{
+        it('should return true',()=>{
+
+            const result = combineBardoces(barcodes);
+            console.log(result);
+            console.log(combineBarcodes);
+
+            expect(result).toEqual(combineBarcodes);
+
+        })
+
+
+    }
+);
+
 
 
 // describe('method1',()=>{

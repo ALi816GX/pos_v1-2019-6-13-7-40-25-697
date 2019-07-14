@@ -32,3 +32,22 @@ const isBarCodesExist = (barcodes) => {
     return true;
 };
 
+
+
+const combineBardoces = (barcodes) => {
+    return barcodes.reduce( (all,one) => {
+        const array = one.split("-");
+        const barcode = array[0];
+        let count = typeof(array[1]) === "undefined" ? 1 : parseInt(array[1]);
+
+        if (barcode in all) {
+            all[barcode] += count;
+        }
+        else {
+            all[barcode] = count;
+        }
+        return all;
+
+    },{});
+};
+
